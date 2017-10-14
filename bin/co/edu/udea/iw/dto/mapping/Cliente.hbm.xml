@@ -1,0 +1,54 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 24/09/2017 10:12:46 AM by Hibernate Tools 3.5.0.Final -->
+<hibernate-mapping>
+    <class name="co.edu.udea.iw.dto.Cliente" table="clientes">
+    
+    	<id name="cedula" type="java.lang.String">
+            <column name="CEDULA" />
+            <generator class="assigned" />
+        </id>
+    	
+    	<property name="nombres" type="java.lang.String">
+            <column name="NOMBRES" length="30" not-null="true"/>
+        </property>
+        
+        <property name="apellidos" type="java.lang.String">
+            <column name="APELLIDOS" length="30" not-null="true"/>
+        </property>
+                
+        <property name="email" type="java.lang.String">
+            <column name="EMAIL" length="120" not-null="true" />
+        </property>
+        
+        <many-to-one name="usuarioCrea" class="co.udea.edu.iw.dto.Usuarios">
+            <column name="USUARIOCREA" length="15" not-null="true"/>
+        </many-to-one>
+        
+        <property name="fechaCreacion" type="java.util.Date">
+            <column name="FECHACREACION" not-null="true" />
+        </property>
+        
+       	<many-to-one name="usuarioModifica" class="co.udea.edu.iw.dto.Usuarios">
+            <column name="USUARIOMODIFICA" length="15"/>
+        </many-to-one>
+        
+        <property name="fechaModificacion" type="java.util.Date">
+            <column name="FECHAMODIFICACION" />
+        </property>
+        
+        <property name="eliminado" type="java.lang.Boolean">
+            <column name="ELIMINADO" length="1"/>
+        </property>
+        
+        <many-to-one name="usuarioElimina" class="co.udea.edu.iw.dto.Usuarios">
+            <column name="USUARIOELIMINA" length="15"/>
+        </many-to-one>
+        
+        <property name="fechaEliminacion" type="java.util.Date">
+            <column name="FECHAELIMINACION" />
+        </property>
+        
+    </class>
+</hibernate-mapping>
